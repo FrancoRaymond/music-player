@@ -9,8 +9,8 @@ const App = () => {
   return (
     <div>
       <Navbar />
-      <main className='px-2 sm:px-5 md:px-10 lg:px-24 grid grid-cols-1 sm:grid-cols-2 gap-5'>
-        <div>
+      <main className='grid grid-cols-1 sm:grid-cols-2 gap-5 mt-6'>
+        <div className='w-full'>
           <Player />
         </div>
         <div>

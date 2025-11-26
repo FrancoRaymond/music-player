@@ -6,7 +6,7 @@ const Navbar = () => {
   const location = useLocation()
 
   return (
-    <div className='px-2 sm:px-5 md:px-10 lg:px-24 py-1.5 flex items-center justify-between'>
+    <div className='px-2 sm:px-5 md:px-10 py-2.5 flex items-center justify-between bg-gray-500/50 mt-5 rounded-lg border border-lime-50/30'>
       <div className='flex items-center gap-1'>
         <img src={logo} alt=""  className='size-5'/>
         <h1 className='text-lime-400 text-lg font-semibold'>Music</h1>
