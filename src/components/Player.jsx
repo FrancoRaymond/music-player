@@ -3,7 +3,7 @@ import play from '../assets/icons/play.svg'
 import pause from '../assets/icons/pause.svg'
 import next from '../assets/icons/next.svg'
 
-const Player = () => {
+const Player = ({audioRef}) => {
   const [playing, setPlaying] = useState(false)
   
   return (
