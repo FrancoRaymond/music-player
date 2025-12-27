@@ -1,12 +1,13 @@
 import React,{useRef} from 'react'
 import play from '../assets/icons/play.svg'
 
-const AllSongs = ({currentSong, setCurrentSong, songs, setSongs,  handlePlay, audioRef}) => {
+const AllSongs = ({currentSong, setCurrentSong, songs, setSongs,  handlePlay, audioRef, setPlaying}) => {
   const fileInputRef = useRef(null);
   
 
   const handleClick = () => {
     fileInputRef.current.click();
+    setPlaying(true)
   };
 
   const handleFileChange = (e) => {
