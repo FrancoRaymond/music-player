@@ -8,6 +8,8 @@ const AppProvider = ({ children }) => {
     const [songs, setSongs] = useState([])
     const audioRef = useRef(null);
     const [playing, setPlaying] = useState(false)
+    const [currentTime, setCurrentTime] = useState(0);
+    const [duration, setDuration] = useState(0);
 
     const handlePlay = (song, name) => {
         setCurrentSong(name);
@@ -42,7 +44,11 @@ const AppProvider = ({ children }) => {
             playing, 
             setPlaying,
             handlePlay,
-            togglePlay
+            togglePlay,
+            currentTime, 
+            setCurrentTime,
+            duration, 
+            setDuration
         }
       }
     >
