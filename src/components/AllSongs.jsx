@@ -1,8 +1,10 @@
 import React,{useRef} from 'react'
+import { useAppContext } from '../context/context';
 import play from '../assets/icons/play.svg'
 
-const AllSongs = ({currentSong, setCurrentSong, songs, setSongs,  handlePlay, audioRef, setPlaying}) => {
+const AllSongs = () => {
   const fileInputRef = useRef(null);
+  const {currentSong, setCurrentSong, songs, setSongs,  handlePlay, audioRef, setPlaying} = useAppContext()
   
 
   const handleClick = () => {
@@ -31,15 +33,19 @@ const AllSongs = ({currentSong, setCurrentSong, songs, setSongs,  handlePlay, au
       </div>
       <div className='mt-3'>
         {
-          songs.map((song, index) => (
-            <div onClick={() => handlePlay(song, song.name)} key={song.name} className={`p-2 rounded-lg mt-2 cursor-pointer flex gap-3 items-center ${song.name === currentSong ? 'bg-lime-400/30' : 'bg-white/10'}`}>
-              <div className='grow'>
-                <p className='text-xs font-semibold text-white'>{song.name.slice(0, 30) + '...'}</p>
-                <p className='text-gray-400 text-xs mt-1'>{(song.size / 1000000).toFixed(1) + "mb"}</p>
-              </div>
-              <img src={play} alt="" className={`size-3.5 ${song.name === currentSong ? 'animate-pulse' : 'hidden'}`}/>
+         songs.length ? ( songs.map((song, index) => (
+          <div onClick={() => handlePlay(song, song.name)} key={song.name} className={`p-2 rounded-lg mt-2 cursor-pointer flex gap-3 items-center ${song.name === currentSong ? 'bg-lime-400/30' : 'bg-white/10'}`}>
+            <div className='grow'>
+              <p className='text-xs font-semibold text-white'>{song.name.slice(0, 30) + '...'}</p>
+              <p className='text-gray-400 text-xs mt-1'>{(song.size / 1000000).toFixed(1) + "mb"}</p>
             </div>
-          ))
+            <img src={play} alt="" className={`size-3.5 ${song.name === currentSong ? 'animate-pulse' : 'hidden'}`}/>
+          </div>
+        ))) : (
+          <div className='rounded-md border-white px-5 py-10 text-white bg-white/10 mt-3'>
+            <p className='text-center text-sm'>No songs found</p>
+          </div>
+        )
         }
       </div>
     </div>

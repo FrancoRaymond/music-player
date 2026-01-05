@@ -1,25 +1,14 @@
 import React,{ useState, useEffect } from 'react'
+import { useAppContext } from '../context/context'
 import play from '../assets/icons/play.svg'
 import pause from '../assets/icons/pause.svg'
 import next from '../assets/icons/next.svg'
 import ProgressBar from './ProgressBar'
 import VolumeSlider from './VolumeSlider'
 
-const Player = ({audioRef, currentSong, playing, setPlaying}) => {
+const Player = () => {
+  const {audioRef, currentSong, playing, setPlaying, togglePlay} = useAppContext()
   
-
-  const togglePlay = () => {
-    if (!audioRef.current) return;
-
-    if (audioRef.current.paused) {
-      audioRef.current.play();
-      setPlaying(true);
-    } else {
-      audioRef.current.pause();
-      setPlaying(false);
-    }
-    console.log(playing)
-  };
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -33,8 +22,8 @@ const Player = ({audioRef, currentSong, playing, setPlaying}) => {
   
   return (
     <div className='px-2 sm:px-5 md:px-10 py-6 bg-gray-500/50 rounded-lg border border-lime-50/30 flex flex-col items-center'>
-      <h1 className='text-white font-semibold'>Find my way</h1>
-      <p className='text-gray-400 text-sm mt-2'>Nasty c</p>
+      <h1 className='text-white font-semibold overflow-hidden text-center'>{currentSong.split('-')[1] || 'Unknown'}</h1>
+      <p className='text-gray-400 text-sm mt-2 overflow-hidden'>{currentSong.split('-')[0] || 'Unknown'}</p>
       <div className='rounded-lg border border-lime-50/30 bg-black/10 w-[60%] h-[40vw] sm:w-[60%] sm:h-[20vw] mt-6'>
       </div>
       <ProgressBar />
@@ -49,4 +38,4 @@ const Player = ({audioRef, currentSong, playing, setPlaying}) => {
   )
 }
 
-export default Player
+export default Player 
