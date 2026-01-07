@@ -1,4 +1,4 @@
-import React,{ useState, useEffect } from 'react'
+import React,{ useEffect } from 'react'
 import { useAppContext } from '../context/context'
 import play from '../assets/icons/play.svg'
 import pause from '../assets/icons/pause.svg'
